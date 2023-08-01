@@ -28,7 +28,6 @@ public class Main {
 			@Override
 			public String format(LogRecord r) {
 				// Check if the log message contains sensitive information (e.g., passwords)
-				String message = r.getMessage();
 				return r.getMessage() + "\n";
 			}
 		};
