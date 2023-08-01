@@ -194,9 +194,8 @@ public class Main {
 											ownerForEdit.getLocation(),
 											ownerForEdit.getEmailForContact()
 									);
-									if (i >= 0 && i < dataBase.size()) {
 										dataBase.remove(i);
-									}									dataBase.add(i, owner);
+										dataBase.add(i, owner);
 								}
 								logger.info(logMessageForDone);
 
@@ -243,9 +242,7 @@ public class Main {
 							{
 
 								Sakan sakanAfter=new Sakan(a2);
-								if (o>=0&&o<sakan.size()) {
 									sakan.remove(o);
-								}
 								sakan.add(o, sakanAfter);
 
 							}

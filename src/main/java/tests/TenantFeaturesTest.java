@@ -1,4 +1,4 @@
-package testsFolder;
+package tests;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.example.*;

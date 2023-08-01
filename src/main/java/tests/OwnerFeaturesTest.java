@@ -1,4 +1,4 @@
-package testsFolder;
+package tests;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -80,7 +80,6 @@ assertNull(DataBase.getOwner("anyString"));
     @Then("the Owner can change his Sakan electricity and Water services")
     @Test
     public void theOwnerCanChangeHisSakanElectricityAndWaterServices() {
-        List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
                 Owner owner3 = (Owner) user;
@@ -115,7 +114,6 @@ assertNull(DataBase.getOwner("anyString"));
     @Then("the Owner can see his email")
     @Test
     public void theOwnerCanSeeHisEmail() {
-        List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
                 Owner owner3 = (Owner) user;
@@ -130,7 +128,6 @@ assertNull(DataBase.getOwner("anyString"));
     @Test
     public void theOwnerCanSeeHisLocation() {
 
-        List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
                 Owner owner3 = (Owner) user;
@@ -145,7 +142,6 @@ assertNull(DataBase.getOwner("anyString"));
     @Then("the Owner can see his phoneNo")
     @Test
     public void theOwnerCanSeeHisPhoneNo() {
-        List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
                 Owner owner3 = (Owner) user;
@@ -158,7 +154,6 @@ assertNull(DataBase.getOwner("anyString"));
 
     @Then("the Owner can see the Dashboard")
     public void theOwnerCanSeeTheDashboard() {
-        List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
                 Owner owner3 = (Owner) user;
