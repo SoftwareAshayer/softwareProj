@@ -1,4 +1,4 @@
-package TestsFolder.tests;
+package testsFolder.tests;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,20 +15,21 @@ public class AdministratorFeatureTest {
 
 
     @Given("that the user is Administrator")
-    public void that_the_user_is_administrator() {
-
-    }
+    public void thatTheUserIsAdministrator() {
+        /*
+         don't need to implement it
+         */    }
     @Then("the Administrator can see if there is changes in the system")
     @Test
-    public void the_administrator_can_see_if_there_is_changes_in_the_system() {
-        List <Users> DB= DataBase.initializeDB();
-        List <Users> DB2=DataBase.initializeDB();
+    public void theAdministratorCanSeeIfThereIsChangesInTheSystem() {
+        List <Users> dataBase= DataBase.initializeDB();
+        List <Users> dataBase2=DataBase.initializeDB();
         Owner owner=new Owner();
-         owner=(Owner) DB.get(1);
+         owner=(Owner) dataBase.get(1);
         owner.setEmailForContact("newemail@example.com");
-        DB.set(1, owner);
+        dataBase.set(1, owner);
 
-        assertTrue(AdministratorFeature.administratorFeatureOne(DB,DB2));
+        assertTrue(AdministratorFeature.administratorFeatureOne(dataBase,dataBase2));
 List <Sakan> sakan=new ArrayList<>();
 List <Sakan> sakan2=new ArrayList<>();
 sakan=DataBase.initializeSakan();
@@ -58,10 +59,10 @@ assertTrue(AdministratorFeature.administratorFeatureOneForSakan(sakan,sakan2));
 
     @Then("the Administrator can see if there is no changes in the system")
     @Test
-    public void the_administrator_can_see_if_there_is_no_changes_in_the_system() {
-        List <Users> DB=DataBase.initializeDB();
-        List <Users> DB2=DataBase.initializeDB();
-        assertFalse(AdministratorFeature.administratorFeatureOne(DB,DB2));
+    public void theAdministratorCanSeeIfThereIsNoChangesInTheSystem() {
+        List <Users> dataBase=DataBase.initializeDB();
+        List <Users> dataBase2=DataBase.initializeDB();
+        assertFalse(AdministratorFeature.administratorFeatureOne(dataBase,dataBase2));
     }
 
 

@@ -2,7 +2,10 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 public class DataBase {
-
+private DataBase()
+{
+    //private constructor
+}
     public static Sakan getS1() {
         return s1;
     }
@@ -11,38 +14,38 @@ public class DataBase {
         return s2;
     }
 
-    public static Sakan s1=new Sakan();
+    public static final Sakan s1=new Sakan();
 
-    public static Sakan s2=new Sakan();
+    public static final Sakan s2=new Sakan();
 
     public static void sakanEditDeitails(Sakan s1,Sakan s2)
     {
-        SakanDetails ForS1=new SakanDetails();
-        SakanDetails ForS2=new SakanDetails();
-        ForS1.setFurnitureSaled(false);
-        ForS1.setLocation("90 Street");
-        ForS1.setNumberOfFloor(1);
-        ForS1.setRentMonthly(500);
-        ForS1.setSakanElectricity(true);
-        ForS1.setSakanWater(true);
-ForS1.setHasBalcony(true);
-ForS1.setNumberOfBathrooms(3);
-ForS1.setNumberOfBedrooms(4);
-ForS1.setNumberOfFloor(1);
-        s1.setSakanD(ForS1);
-        ForS2.setFurnitureSaled(false);
-        ForS2.setLocation("2 Street");
-        ForS2.setNumberOfFloor(3);
-        ForS2.setRentMonthly(1500);
-        ForS2.setSakanElectricity(false);
-        ForS2.setSakanWater(false);
-        s2.setSakanD(ForS2);
+        SakanDetails forS1=new SakanDetails();
+        SakanDetails forS2=new SakanDetails();
+        forS1.setFurnitureSaled(false);
+        forS1.setLocation("90 Street");
+        forS1.setNumberOfFloor(1);
+        forS1.setRentMonthly(500);
+        forS1.setSakanElectricity(true);
+        forS1.setSakanWater(true);
+        forS1.setHasBalcony(true);
+        forS1.setNumberOfBathrooms(3);
+        forS1.setNumberOfBedrooms(4);
+        forS1.setNumberOfFloor(1);
+        s1.setSakanD(forS1);
+        forS2.setFurnitureSaled(false);
+        forS2.setLocation("2 Street");
+        forS2.setNumberOfFloor(3);
+        forS2.setRentMonthly(1500);
+        forS2.setSakanElectricity(false);
+        forS2.setSakanWater(false);
+        s2.setSakanD(forS2);
 
 
     }
 
     public static List<Users> initializeDB() {
-        List<Users> DB = new ArrayList<>();
+        List<Users> dataBase = new ArrayList<>();
 
         Administrator admin = new Administrator("Ahmad","1234");
         Owner owner1 = new Owner("Ali","al1234");
@@ -79,12 +82,12 @@ ForS1.setNumberOfFloor(1);
         tenant5.setAStudent(false);
         tenant5.setTimeForRent("18/12/2023");
         tenant5.setUniversityMajor("CE");
-        DB.add(admin);
-        DB.add(owner1);
-        DB.add(owner2);
-        DB.add(tenant3);
-        DB.add(tenant4);
-        DB.add(tenant5);
+        dataBase.add(admin);
+        dataBase.add(owner1);
+        dataBase.add(owner2);
+        dataBase.add(tenant3);
+        dataBase.add(tenant4);
+        dataBase.add(tenant5);
 
 
 
@@ -104,15 +107,15 @@ ForS1.setNumberOfFloor(1);
 
         tenant1.setS(s1);
         tenant2.setS(s2);
-        DB.add(tenant1);
-        DB.add(tenant2);
+        dataBase.add(tenant1);
+        dataBase.add(tenant2);
 
 
 
 
 
 
-        return DB;
+        return dataBase;
     }
 
 

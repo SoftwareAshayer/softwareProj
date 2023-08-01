@@ -1,4 +1,4 @@
-package TestsFolder.tests;
+package testsFolder.tests;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.example.*;
@@ -15,14 +15,14 @@ String username="omar";
 
     Tenant tenant;
     @Given("that the user is Tenant")
-    public void that_the_user_is_tenant() {
+    public void thatTheUserIsTenant() {
         assertNotNull(DataBase.getTenant(username));
         assertNull(DataBase.getTenant("anyString"));
  tenant=new Tenant();
     }
     @Then("the Tenant can see list of Availabel Sakans")
     @Test
-    public void the_tenant_can_see_list_of_availabel_sakans() {
+    public void theTenantCanSeeListOfAvailabelSakans() {
 
 List <Sakan>sakan=DataBase.initializeSakan();
         List <Sakan>sakanAvailabel=   TenantFeatures.seeAvailableHousing(sakan);
@@ -37,7 +37,7 @@ for(Sakan s:sakanAvailabel)
 ////////////////feature two
     @Then("the Tenant can see pictures of housing and know their prices, location,and services")
     @Test
-    public void the_tenant_can_see_pictures_of_housing_and_know_their_prices_location_and_services() {
+    public void theTenantCanSeePicturesOfHousingAndKnowTheirPricesLocationAndServices() {
 List <Sakan> sakan=DataBase.initializeSakan();
 boolean getInfromations=TenantFeatures.seeInformationsAboutSakan(sakan);
 assertTrue(getInfromations);
@@ -51,18 +51,18 @@ assertTrue(getInfromations);
 
     @Then("the Tenant sign in the availabel sakan")
     @Test
-    public void the_tenant_sign_in_the_availabel_sakan() {
-        Tenant tenant=DataBase.getTenant(username);
-        assert tenant != null;
-        Sakan sakan=new Sakan(tenant.getS());
-        sakan.setTenant(tenant);
-        TenantFeatures.SignInSakan(tenant);
+    public void theTenantSignInTheAvailabelSakan() {
+        Tenant tenant2=DataBase.getTenant(username);
+        assert tenant2 != null;
+        Sakan sakan=new Sakan(tenant2.getS());
+        sakan.setTenant(tenant2);
+        TenantFeatures.signInSakan(tenant2);
         boolean tenantSignedInSakan=sakan.isAvailabel();
         assertTrue(tenantSignedInSakan);
-        Tenant tenant2=new Tenant();
+        Tenant tenant1=new Tenant();
         Tenant tenant3=new Tenant();
         Tenant tenant4=new Tenant();
-        sakan.setTenant(tenant2);
+        sakan.setTenant(tenant1);
         sakan.setTenant(tenant3);
         sakan.setTenant(tenant4);
         sakan.setAvailabel();
@@ -79,20 +79,20 @@ assertTrue(getInfromations);
 
     @Then("the Tenant can see details about students if he is student")
     @Test
-    public void the_tenant_can_see_details_about_students_if_he_is_student() {
-        Tenant tenant=DataBase.getTenant(username);
-        assert tenant != null;
-        List <Users>DB;
-        DB= DataBase.initializeDB();
-        Tenant student=TenantFeatures.StudentAccess(tenant,DB);
+    public void theTenantCanSeeDetailsAboutStudentsIfHeIsStudent() {
+        Tenant tenant1=DataBase.getTenant(username);
+        assert tenant1 != null;
+        List <Users>dataBase;
+        dataBase= DataBase.initializeDB();
+        Tenant student=TenantFeatures.studentAccess(tenant1,dataBase);
         assertNotNull(student);
 Tenant tenant2=new Tenant("anyName","anyPass");
 tenant2.setAStudent(false);
-assertNull(TenantFeatures.StudentAccess(tenant2,DB));
-        List <Users>DB2=new ArrayList<>();
+assertNull(TenantFeatures.studentAccess(tenant2,dataBase));
+        List <Users>dataBase2=new ArrayList<>();
         Tenant tenant3=new Tenant();
         tenant3.setAStudent(true);
-        assertNull(TenantFeatures.StudentAccess(tenant3,DB2));
+        assertNull(TenantFeatures.studentAccess(tenant3,dataBase2));
 
 
 
@@ -103,11 +103,11 @@ assertNull(TenantFeatures.StudentAccess(tenant2,DB));
 
     @Then("the Tenant can sell the furniture")
     @Test
-    public void the_tenant_can_sell_the_furniture() {
-    Tenant tenant=DataBase.getTenant(username);
-        assert tenant != null;
+    public void theTenantCanSellTheFurniture() {
+    Tenant tenant1=DataBase.getTenant(username);
+        assert tenant1 != null;
         boolean sold;
-    sold=TenantFeatures.SellFurniture(tenant);
+    sold=TenantFeatures.SellFurniture(tenant1);
     assertTrue(sold);
 
 
@@ -125,22 +125,22 @@ assertNull(TenantFeatures.StudentAccess(tenant2,DB));
 
     @Then("the Tenant can see details for all infromations about this Sakan")
     @Test
-    public void the_tenant_can_see_details_for_all_infromations_about_this_sakan() {
-        Tenant tenant=DataBase.getTenant(username);
-        assert tenant != null;
-        Tenant tenant2=new Tenant(tenant.getName(),tenant.getPass(),tenant.getTimeForRent(),tenant.isAStudent,tenant.getS(),tenant.getAge(),tenant.getUniversityMajor());
+    public void theTenantCanSeeDetailsForAllInfromationsAboutThisSakan() {
+        Tenant tenant1=DataBase.getTenant(username);
+        assert tenant1 != null;
+        Tenant tenant2=new Tenant(tenant1.getName(),tenant1.getPass(),tenant1.getTimeForRent(),tenant1.heIsAStudent(),tenant1.getS(),tenant1.getAge(),tenant1.getUniversityMajor());
         List <Sakan> sakan=DataBase.initializeSakan();
-        tenant.setS(sakan.get(0));
+        tenant1.setS(sakan.get(0));
 
         boolean doneForFeatureSix=TenantFeatures.ShowAllDeitails(tenant2);
          assertTrue(doneForFeatureSix);
-         assertNotEquals("",tenant.toString());
-         assertNotEquals("",tenant.getS().toString());
-         assertNotEquals("",tenant.getS().getSakanD().toString());
-         Tenant tenant1=new Tenant("anyName","anyPass");
-         tenant1.setS(new Sakan());
-         tenant1.getS().setOwner(new Owner());
-         assertFalse(TenantFeatures.ShowAllDeitails(tenant1));
+         assertNotEquals("",tenant1.toString());
+         assertNotEquals("",tenant1.getS().toString());
+         assertNotEquals("",tenant1.getS().getSakanD().toString());
+         Tenant tenant3=new Tenant("anyName","anyPass");
+         tenant3.setS(new Sakan());
+         tenant3.getS().setOwner(new Owner());
+         assertFalse(TenantFeatures.ShowAllDeitails(tenant3));
 
     }
 

@@ -1,11 +1,12 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Sakan {
 
-	public ArrayList<String> getPhotos() {
+	public List<String> getPhotos() {
 		return photos;
 	}
 
@@ -47,12 +48,12 @@ public class Sakan {
 
 
 
-	public ArrayList <String> photos;
+	private List <String> photos;
 
 
 
 	int maxNoOfTenants;
-	public ArrayList<Tenant> getTenant() {
+	public List<Tenant> getTenant() {
 		return tenant;
 	}
 
@@ -61,8 +62,8 @@ public class Sakan {
 		maxNoOfTenants++;
 	}
 
-	public ArrayList <Tenant> tenant;
-	public Owner owner;
+	private List <Tenant> tenant;
+	private Owner owner;
 	public SakanDetails getSakanD() {
 		return sakanD;
 	}
@@ -79,9 +80,9 @@ public class Sakan {
 
 
 
-	public SakanDetails sakanD;
+	private SakanDetails sakanD;
 	public boolean isAvailabel() {
-		return Availabel;
+		return availabel;
 	}
 
 
@@ -89,7 +90,7 @@ public class Sakan {
 
 
 	public void setAvailabel() {
-		this.Availabel= maxNoOfTenants < 4;
+		this.availabel= maxNoOfTenants < 4;
 
 	}
 
@@ -97,7 +98,7 @@ public class Sakan {
 
 
 
-	boolean Availabel;
+	boolean availabel;
 	
 	
 	
@@ -106,7 +107,7 @@ public class Sakan {
 	public Sakan() {
 		
 		photos=new ArrayList <>();
-		Availabel= true;
+		availabel= true;
 		sakanD=null;
 		owner=null;
 		maxNoOfTenants=0;
@@ -117,7 +118,7 @@ public class Sakan {
 	        this.photos = new ArrayList<>(otherSakan.photos);
 	        this.owner = otherSakan.owner;
 	        this.sakanD = new SakanDetails(otherSakan.sakanD);
-	        this.Availabel = otherSakan.Availabel;
+	        this.availabel = otherSakan.availabel;
 			this.maxNoOfTenants= otherSakan.maxNoOfTenants;
 			this.tenant=otherSakan.tenant;
 	}
@@ -129,7 +130,7 @@ public class Sakan {
 	                "photos=" + photos +
 	                ", owner=" + owner +
 	                ", sakanD=" + sakanD.toString() +
-	                ", available=" + Availabel;
+	                ", available=" + availabel;
 	    }
 
 
@@ -142,7 +143,7 @@ public class Sakan {
 
 		Sakan s2 = (Sakan) obj;
 
-		return Availabel == s2.Availabel &&
+		return availabel == s2.availabel &&
 				Objects.equals(photos, s2.photos) &&
 				Objects.equals(owner, s2.owner) &&
 				Objects.equals(sakanD, s2.sakanD);

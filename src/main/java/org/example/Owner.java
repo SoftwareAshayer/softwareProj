@@ -3,27 +3,27 @@ package org.example;
 import java.util.Objects;
 
 public class Owner extends Users {
-    String PhoneNumber;
+    String phoneNumber;
 	public String getPhoneNumber() {
-		return PhoneNumber;
+		return phoneNumber;
 	}
 	public void setPhoneNumber(String phoneNumber) {
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 	public String getLocation() {
-		return Location;
+		return location;
 	}
 	public void setLocation(String location) {
-		Location = location;
+		this.location = location;
 	}
 	public String getEmailForContact() {
-		return EmailForContact;
+		return emailForContact;
 	}
 	public void setEmailForContact(String emailForContact) {
-		EmailForContact = emailForContact;
+		this.emailForContact = emailForContact;
 	}
-	String Location;
-	String EmailForContact;
+	String location;
+	String emailForContact;
 
 	public Sakan getSakan() {
 		return sakan;
@@ -36,19 +36,19 @@ public class Owner extends Users {
 	Sakan sakan;
 
 	public Owner() {
-		name="";
-		PhoneNumber="";
-		Location="";
-		EmailForContact="";
+		setName("");
+		phoneNumber="";
+		location="";
+		emailForContact="";
 		sakan=null;
 		
 	}
-	public Owner(String name,String pass,String PhoneNumber,String Location,String EmailForContact) {
+	public Owner(String name,String pass,String phoneNumber,String location,String emailForContact) {
         super(name,pass);
         // Copy other attributes from the otherOwner object
-        this.PhoneNumber = PhoneNumber;
-        this.Location = Location;
-        this.EmailForContact = EmailForContact;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
+        this.emailForContact = emailForContact;
 
     }
 	public Owner(String name,String password) {
@@ -57,10 +57,10 @@ public class Owner extends Users {
 	@Override
 	public String toString() {
         return "Owner\n" +
-                "name='" + name + '\'' +
-                ", PhoneNumber='" + PhoneNumber + '\'' +
-                ", Location='" + Location + '\'' +
-                ", EmailForContact='" + EmailForContact + '\'';
+                "name='" + getName() + '\'' +
+                ", PhoneNumber='" + phoneNumber + '\'' +
+                ", Location='" + location + '\'' +
+                ", EmailForContact='" + emailForContact + '\'';
     }
 	@Override
 	public boolean equals(Object obj) {
@@ -69,9 +69,9 @@ public class Owner extends Users {
 
 		Owner o2 = (Owner) obj;
 
-		return Objects.equals(PhoneNumber, o2.PhoneNumber) &&
-				Objects.equals(Location, o2.Location) &&
-				Objects.equals(EmailForContact, o2.EmailForContact);
+		return Objects.equals(phoneNumber, o2.phoneNumber) &&
+				Objects.equals(location, o2.location) &&
+				Objects.equals(emailForContact, o2.emailForContact);
 	}
 
 

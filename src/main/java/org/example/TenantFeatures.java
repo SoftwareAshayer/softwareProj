@@ -5,17 +5,21 @@ import java.util.List;
 import java.util.Objects;
 
 public class TenantFeatures {
+   private TenantFeatures()
+   {
+       //private constructor
+   }
     public static List <Sakan>seeAvailableHousing(List<Sakan> sakan) {
-        List<Sakan> AvailabelSakan = new ArrayList<>();
-for(Sakan AvailabelS:sakan)
+        List<Sakan> availabelSakan = new ArrayList<>();
+for(Sakan availabelS:sakan)
 {
-    if (AvailabelS.isAvailabel())
+    if (availabelS.isAvailabel())
     {
-        AvailabelSakan.add(AvailabelS);
+        availabelSakan.add(availabelS);
     }
 }
 
-        return AvailabelSakan;
+        return availabelSakan;
     }
 
 
@@ -24,7 +28,7 @@ for(Sakan AvailabelS:sakan)
     public static boolean seeInformationsAboutSakan(List <Sakan> sakan)
     {
      Sakan s=sakan.get(1);
-     return s.getPhotos().size() > 0 && !s.getSakanD().isSakanElectricity() && !s.getSakanD().isSakanWater()&& !Objects.equals(s.getSakanD().getLocation(), "");
+     return !s.getPhotos().isEmpty() && !s.getSakanD().isSakanElectricity() && !s.getSakanD().isSakanWater()&& !Objects.equals(s.getSakanD().getLocation(), "");
 
 
 
@@ -39,7 +43,7 @@ for(Sakan AvailabelS:sakan)
 
 
 
-    public static void SignInSakan(Tenant tenant)
+    public static void signInSakan(Tenant tenant)
     {
         List <Sakan> sakan= DataBase.initializeSakan();
 Sakan s=sakan.get(0);
@@ -55,17 +59,16 @@ if(s.isAvailabel()) {
 
 
 
-    public static Tenant StudentAccess(Tenant tenant,List <Users>DB)
+    public static Tenant studentAccess(Tenant tenant,List <Users>dataBase)
     {
-        if(!tenant.isAStudent)
+        if(!tenant.heIsAStudent())
             return null;
         else {
             List<Users> tenants;
-            tenants = DB;
+            tenants = dataBase;
             for (Users user : tenants) {
-                if (user instanceof Tenant student && !Objects.equals(user.getName(), tenant.getName()))
+                if (user instanceof Tenant student && !Objects.equals(user.getName(), tenant.getName())&&student.heIsAStudent())
                 {
-                    if( student.heIsAStudent())
                         return student;
 
 

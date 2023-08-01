@@ -26,8 +26,8 @@ public class Main {
         logger.setUseParentHandlers(false);
         Formatter formatter = new Formatter() {
             @Override
-            public String format(LogRecord record) {
-                return record.getMessage() + "\n";
+            public String format(LogRecord r) {
+                return r.getMessage() + "\n";
             }
         };
         ConsoleHandler consoleHandler = new ConsoleHandler();           //this logger method i use it to print the statments instead of system.out
@@ -144,14 +144,14 @@ public class Main {
 							{
 								if(flagForType==0)
 								{
-									Tenant TForEdit=(Tenant)u1;
-									Tenant tenant=new Tenant(TForEdit.getName(),
-											TForEdit.getPass(),
-											TForEdit.getTimeForRent(),
-											TForEdit.isAStudent,
-											TForEdit.getS(),
-											TForEdit.getAge(),
-											TForEdit.getUniversityMajor());            	            		dataBase2.remove(i);
+									Tenant tenantForEdit=(Tenant)u1;
+									Tenant tenant=new Tenant(tenantForEdit.getName(),
+											tenantForEdit.getPass(),
+											tenantForEdit.getTimeForRent(),
+											tenantForEdit.heIsAStudent(),
+											tenantForEdit.getS(),
+											tenantForEdit.getAge(),
+											tenantForEdit.getUniversityMajor());            	            		dataBase2.remove(i);
 									dataBase2.add(i, tenant);
 								}
 								else {
@@ -179,7 +179,7 @@ public class Main {
 									Tenant tenant=new Tenant(tenantForEdit.getName(),
 											tenantForEdit.getPass(),
 											tenantForEdit.getTimeForRent(),
-											tenantForEdit.isAStudent,
+											tenantForEdit.heIsAStudent(),
 											tenantForEdit.getS(),
 											tenantForEdit.getAge(),
 											tenantForEdit.getUniversityMajor());
@@ -194,8 +194,9 @@ public class Main {
 											ownerForEdit.getLocation(),
 											ownerForEdit.getEmailForContact()
 									);
-									dataBase.remove(i);
-									dataBase.add(i, owner);
+									if (i >= 0 && i < dataBase.size()) {
+										dataBase.remove(i);
+									}									dataBase.add(i, owner);
 								}
 								logger.info(logMessageForDone);
 
@@ -242,7 +243,9 @@ public class Main {
 							{
 
 								Sakan sakanAfter=new Sakan(a2);
-								sakan.remove(o);
+								if (0 >= 0 && 0 < sakan.size()) {
+									sakan.remove(o);
+								}
 								sakan.add(o, sakanAfter);
 
 							}
@@ -333,7 +336,7 @@ public class Main {
 							String photoPath=scanner.next();
 							for (Sakan s : sakan)
 							{
-								if(s.owner.name.equals(username))
+								if(s.getOwner().getName().equals(username))
 								{
 									s.setPhotos(photoPath);
 									logger.info("Done!");
@@ -419,10 +422,10 @@ public class Main {
                         {
                         	for (Sakan s : sakan)
                            	{
-                           		if(s.owner.name.equals(username))
+                           		if(s.getOwner().getName().equals(username))
                            		{
-                              	 boolean electricity=s.sakanD.isSakanElectricity();
-                              	 boolean water=s.sakanD.isSakanWater();
+                              	 boolean electricity=s.getSakanD().isSakanElectricity();
+                              	 boolean water=s.getSakanD().isSakanWater();
 
 									if(electricity) {
 										String logMessage24 = String.format("%sThe Sakan has Electricity%s", specialColor2, resetColor);
@@ -460,7 +463,7 @@ public class Main {
                                 if(ch2==1)
                                 {
 
-                                	s.sakanD.setSakanElectricity(!electricity);
+                                	s.getSakanD().setSakanElectricity(!electricity);
                                  	 logger.info(logMessageForDone);
 
 
@@ -470,7 +473,7 @@ public class Main {
                                 {
 
 
-                                	s.sakanD.setSakanWater(!water);
+                                	s.getSakanD().setSakanWater(!water);
 									logger.info(logMessageForDone);
 
 
@@ -511,11 +514,11 @@ public class Main {
                         {
 							for (Sakan s : sakan)
 							{
-								if(s.owner.name.equals(username))
+								if(s.getOwner().getName().equals(username))
 								{
 
 									String logMessage30 = String.format("%sThe Rent is=%s%d%s",
-											specialColor2, resetColor, s.sakanD.getRentMonthly(), resetColor);
+											specialColor2, resetColor, s.getSakanD().getRentMonthly(), resetColor);
 
 									logger.info(logMessage30);
 								}
@@ -529,7 +532,7 @@ public class Main {
 
                         	for (Sakan s : sakan)
                            	{
-                           		if(s.owner.name.equals(username))
+                           		if(s.getOwner().getName().equals(username))
                            		{
 
 									String logMessage31 = String.format("%sContact Us-->Email:=%s%s%nPhone:%s%s",
@@ -540,29 +543,26 @@ public class Main {
 											specialColor, yellowColor, greenColor, yellowColor, greenColor, yellowColor, greenColor, resetColor);
 
 									logger.info(logMessage32);
-									while(true)
-                                 	 {
+
                                  	 int ch=scanner.nextInt();
                                  	 if(ch==1)
                                  	 {
 										 String logMessage33 = String.format("%sEnter the new email%s", specialColor, resetColor);
 
 										 logger.info(logMessage33);
-										 String Email=scanner.next();
-                                 		 owner.setEmailForContact(Email);
+										 String email=scanner.next();
+                                 		 owner.setEmailForContact(email);
 										 logger.info(logMessageForDone);
-										  break;
                                  	 }
                                  	 else if(ch==2)
                                  	 {
 										 String logMessage34 = String.format("%sEnter the new No#%s", specialColor, resetColor);
 
 										 logger.info(logMessage34);
-										 String No=scanner.next();
+										 String number=scanner.next();
                                 		 scanner.close();
-                                		 owner.setPhoneNumber(No);
+                                		 owner.setPhoneNumber(number);
                                      	 logger.info(logMessageForDone);
-										  break;
 
 
                                  	 }
@@ -578,7 +578,7 @@ public class Main {
 
                                  	 }
 
-                                 	 }
+
                            		}
                            	}
 
@@ -593,7 +593,7 @@ public class Main {
 						{
 							for (Sakan s : sakan)
 							{
-								if(s.owner.name.equals(username))
+								if(s.getOwner().getName().equals(username))
 								{
 									String logMessage35 = String.format("%sThe Number of Tenants is:-%s%d%s",
 											specialColor2, resetColor, s.getTenant().size(), resetColor);
@@ -601,7 +601,9 @@ public class Main {
 									logger.info(logMessage35);
 									for(int i=0;i<s.getTenant().size();i++)
 									{
-										logger.info(specialColor2 +i+1+"-"+s.getTenant().get(i).getName()+ resetColor);
+										String logMsg=String.format("%s%d-%s%s%n", specialColor2, i + 1, s.getTenant().get(i).getName(), resetColor);
+										logger.info(logMsg);
+
 									}
 									String logMessage36 = String.format("%sThe Number of Floor is:-%s%d%s",
 											specialColor2, resetColor, s.getSakanD().getNumberOfFloor(), resetColor);
@@ -713,13 +715,13 @@ logger.info(logMessageForWrong);
                          if(choice3==1)
                         {
 
-							String logMessage47 = String.format("%sThe Available Sakans Are:-%s \n", specialColor2, resetColor);
+							String logMessage47 = String.format("%sThe Available Sakans Are:-%s ", specialColor2, resetColor);
 							logger.info(logMessage47);
                         	for (Sakan s : sakan)
                         	{
                         		if(s.isAvailabel())
                         		{
-									String logMessage48 = String.format("%sLocation:- %s Cost:- %s\n%s", specialColor2, s.sakanD.getLocation(), s.sakanD.getRentMonthly(), resetColor);
+									String logMessage48 = String.format("%sLocation:- %s Cost:- %s%s", specialColor2, s.getSakanD().getLocation(), s.getSakanD().getRentMonthly(), resetColor);
 									logger.info(logMessage48);
 								}
                         	}
@@ -748,9 +750,9 @@ logger.info(logMessageForWrong);
 
 
 								}
-								String logMessage49 = String.format("%s%d- Location:- %s\nCost:- %s%s", specialColor2, ++num, s.sakanD.getLocation(), s.sakanD.getRentMonthly(), resetColor);
+								String logMessage49 = String.format("%s%d- Location:- %sCost:- %s%s", specialColor2, ++num, s.getSakanD().getLocation(), s.getSakanD().getRentMonthly(), resetColor);
 								logger.info(logMessage49);
-								if(s.sakanD.isSakanElectricity())
+								if(s.getSakanD().isSakanElectricity())
                              	 {
 									 String logMessage50 = String.format("%sThe Electrical is Available%s", specialColor2, resetColor);
 									 logger.info(logMessage50);
@@ -759,7 +761,7 @@ logger.info(logMessageForWrong);
                              	 {
 									 String logMessage51 = String.format("%sThe Electrical is not Available%s", specialColor2, resetColor);
 									 logger.info(logMessage51);                                 	 }
-                             	 if(s.sakanD.isSakanWater())
+                             	 if(s.getSakanD().isSakanWater())
                              	 {
 									 String logMessage52 = String.format("%sThe Water is Available%s", specialColor2, resetColor);
 									 logger.info(logMessage52);
@@ -793,7 +795,7 @@ logger.info(logMessageForWrong);
                         	{
                         		if(s.isAvailabel())
                         		{
-									String logMessage55 = String.format("%s%d-Location:- %s Cost:- %s\n%s", specialColor2, ++number, s.sakanD.getLocation(), s.sakanD.getRentMonthly(), resetColor);
+									String logMessage55 = String.format("%s%d-Location:- %s Cost:- %s%s", specialColor2, ++number, s.getSakanD().getLocation(), s.getSakanD().getRentMonthly(), resetColor);
 									logger.info(logMessage55);
 								}
                         	}
@@ -803,13 +805,14 @@ logger.info(logMessageForWrong);
                          	 if(choice2>number)
                          	 {
                                	 logger.info(logMessageForWrong);
-continue;
-                         	 }
-                        	 tenant.setS(sakan.get(choice2-1));
-							sakan.get(choice2-1).setTenant(tenant);
-							sakan.get(choice2-1).setAvailabel();
-							logger.info(logMessageForDone);
 
+                         	 }
+							  else {
+								 tenant.setS(sakan.get(choice2 - 1));
+								 sakan.get(choice2 - 1).setTenant(tenant);
+								 sakan.get(choice2 - 1).setAvailabel();
+								 logger.info(logMessageForDone);
+							 }
 
 
 
@@ -820,13 +823,13 @@ continue;
                         {
                         	int number=0;
                         	int flagForNoOne=1;
-                        	if(tenant.isAStudent)
+                        	if(tenant.heIsAStudent())
                         	{
                                 for (Users us : dataBase) {
                                 	if(us.getClass().getName().contains(tenantClassName))
                                 			{
                                 	Tenant t=(Tenant) us;
-                                	if(t.isAStudent && !Objects.equals(t.getName(), tenant.getName()))
+                                	if(t.heIsAStudent() && !Objects.equals(t.getName(), tenant.getName()))
                                 	{
                                 		flagForNoOne=0;
 										String logMessage57 = String.format("%s%d-Name:- %s Age:- %d Usivirsity Major:- %s%s", specialColor2, ++number, t.getName(), t.getAge(), t.getUniversityMajor(), resetColor);
@@ -862,13 +865,13 @@ if(flagForNoOne==1)
 							int choice2=scanner.nextInt();
                         	if(choice2==1)
                         	{
-								if(tenant.s.sakanD.isFurnitureSaled())
+								if(tenant.getS().getSakanD().isFurnitureSaled())
 								{
 									String logMessage61 = String.format("%sAlready Saled!%s", specialColor2, resetColor);
 									logger.info(logMessage61);
 								}
 								else {
-									tenant.s.sakanD.setFurnitureSaled(true);
+									tenant.getS().getSakanD().setFurnitureSaled(true);
 									logger.info(logMessageForDone);
 								}
 
@@ -1052,7 +1055,7 @@ break;
         }
         else if(choice==9)
        {
-		   String logMessage65 = String.format("%s%sThank %sYou%s!", italicText, greenColor, redColor, specialColor, resetColor);
+		   String logMessage65 = String.format("%s%sThank %sYou%s!", italicText, greenColor, redColor, specialColor);
 		   logger.info(logMessage65);
 		   System.exit(0);
        }

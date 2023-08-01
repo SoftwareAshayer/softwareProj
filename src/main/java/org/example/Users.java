@@ -1,8 +1,14 @@
 package org.example;
 
 public class Users {
-   public String name;
-    public String password;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    private String name;
+    private final String password;
 	public Users() {
 		name="";
 		password="";

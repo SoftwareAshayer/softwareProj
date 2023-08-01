@@ -4,13 +4,16 @@ package org.example;
 import java.util.List;
 
 public class OwnerFeatures {
-
-	public static void ownerFeatureOne(List<Sakan> Sakan,String PhotoPath, String username) {
-		for (Sakan s : Sakan)
+private OwnerFeatures()
+{
+	//private constructor
+}
+	public static void ownerFeatureOne(List<Sakan> sakan,String photoPath, String username) {
+		for (Sakan s : sakan)
 		{
-			if(s.owner.name.equals(username))
+			if(s.getOwner().getName().equals(username))
 			{
-			s.setPhotos(PhotoPath);
+			s.setPhotos(photoPath);
 
 			}
 			
@@ -21,8 +24,8 @@ public class OwnerFeatures {
 
 
 
-	public static void ownerFeatureTwo(Owner owner,String email,String phoneNo,String Location) {
-              owner.setLocation(Location);
+	public static void ownerFeatureTwo(Owner owner,String email,String phoneNo,String location) {
+              owner.setLocation(location);
 			  owner.setPhoneNumber(phoneNo);
 			  owner.setEmailForContact(email);
 
@@ -41,11 +44,11 @@ public class OwnerFeatures {
 
 	public static boolean ownerFeatureThree(Owner owner,Sakan sakan,boolean electricity,boolean water) {
 
-		boolean electricityBefore=sakan.sakanD.isSakanElectricity();
-		boolean waterBefore =sakan.sakanD.isSakanWater();
-owner.getSakan().sakanD.setSakanElectricity(!electricity);
-owner.getSakan().sakanD.setSakanWater(!water);
-return (electricityBefore!=owner.getSakan().sakanD.isSakanElectricity())&&(waterBefore!=owner.getSakan().sakanD.isSakanWater());
+		boolean electricityBefore=sakan.getSakanD().isSakanElectricity();
+		boolean waterBefore =sakan.getSakanD().isSakanWater();
+owner.getSakan().getSakanD().setSakanElectricity(!electricity);
+owner.getSakan().getSakanD().setSakanWater(!water);
+return (electricityBefore!=owner.getSakan().getSakanD().isSakanElectricity())&&(waterBefore!=owner.getSakan().getSakanD().isSakanWater());
 
 
 	}

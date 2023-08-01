@@ -3,14 +3,17 @@ package org.example;
 import java.util.List;
 
 public class AdministratorFeature {
+	private AdministratorFeature() {
+		//private constructor
 
-	public static boolean administratorFeatureOne(List<Users> DB, List<Users> DB2)
+	}
+	public static boolean administratorFeatureOne(List<Users>dataBase, List<Users> dataBase2)
 	{
 		boolean flag=false;
-     for(int i=1;i<DB.size();i++)
+     for(int i=1;i<dataBase.size();i++)
 	 {
-		 Users u1 = DB.get(i);
-		 Users u2 = DB2.get(i);
+		 Users u1 = dataBase.get(i);
+		 Users u2 = dataBase2.get(i);
 
 
 
@@ -33,10 +36,10 @@ break;
 		return flag;
 
 	}
-	public static boolean administratorFeatureOneForSakan(List<Sakan> DB, List<Sakan> DB2)
+	public static boolean administratorFeatureOneForSakan(List<Sakan> dataBase, List<Sakan> dataBase2)
 	{
 		boolean flag=false;
-		for(int i=0;i<DB.size();i++)
+		for(int i=0;i<dataBase.size();i++)
 		{
 
 
@@ -44,7 +47,7 @@ break;
 
 
 
-			if(!DB.get(i).equals(DB2.get(i)))
+			if(!dataBase.get(i).equals(dataBase2.get(i)))
 			{
 				flag=true;
 				break;

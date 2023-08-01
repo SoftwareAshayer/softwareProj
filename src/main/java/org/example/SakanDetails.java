@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class SakanDetails {
 
-	boolean SakanWater;
+	boolean sakanWater;
 	int rentMonthly;
-	boolean SakanElectricity;
-	String Location;
-int NumberOfFloor;
+	boolean sakanElectricity;
+	String location;
+int numberOfFloor;
 boolean furnitureSaled;
 
 	public void setHasBalcony(boolean hasBalcony) {
@@ -16,30 +16,30 @@ boolean furnitureSaled;
 	}
 
 	public void setNumberOfBathrooms(int numberOfBathrooms) {
-		NumberOfBathrooms = numberOfBathrooms;
+		this.numberOfBathrooms = numberOfBathrooms;
 	}
 
 	public void setNumberOfBedrooms(int numberOfBedrooms) {
-		NumberOfBedrooms = numberOfBedrooms;
+		this.numberOfBedrooms = numberOfBedrooms;
 	}
 
 	public boolean isHasBalcony() {
 		return hasBalcony;
 	}
 
-	public boolean hasBalcony;
+	private boolean hasBalcony;
 
 	public int getNumberOfBathrooms() {
-		return NumberOfBathrooms;
+		return numberOfBathrooms;
 	}
 
-	int NumberOfBathrooms;
+	int numberOfBathrooms;
 
 	public int getNumberOfBedrooms() {
-		return NumberOfBedrooms;
+		return numberOfBedrooms;
 	}
 
-	int NumberOfBedrooms;
+	int numberOfBedrooms;
 
 
 
@@ -50,27 +50,28 @@ public void setFurnitureSaled(boolean furnitureSaled) {
 	this.furnitureSaled = furnitureSaled;
 }
 	public int getNumberOfFloor() {
-	return NumberOfFloor;
+	return numberOfFloor;
 }
 public void setNumberOfFloor(int numberOfFloor) {
-	NumberOfFloor = numberOfFloor;
+
+		this.numberOfFloor = numberOfFloor;
 }
 	public SakanDetails() {
-		SakanElectricity = true;
-		SakanWater= true;
+		sakanElectricity = true;
+		sakanWater= true;
 		rentMonthly=0;
 	}
 	
 	public SakanDetails(SakanDetails other) {
-        this.SakanWater = other.SakanWater;
+        this.sakanWater = other.sakanWater;
         this.rentMonthly = other.rentMonthly;
-        this.SakanElectricity = other.SakanElectricity;
-        this.Location = other.Location;
-        this.NumberOfFloor = other.NumberOfFloor;
+        this.sakanElectricity = other.sakanElectricity;
+        this.location = other.location;
+        this.numberOfFloor = other.numberOfFloor;
         this.furnitureSaled = other.furnitureSaled;
 		this.hasBalcony=other.hasBalcony;
-		this.NumberOfBathrooms=other.NumberOfBathrooms;
-		this.NumberOfBedrooms=other.NumberOfBedrooms;
+		this.numberOfBathrooms=other.numberOfBathrooms;
+		this.numberOfBedrooms=other.numberOfBedrooms;
     }
 	
 	
@@ -85,7 +86,7 @@ public void setNumberOfFloor(int numberOfFloor) {
 	
 	
 	public boolean isSakanElectricity() {
-		return SakanElectricity;
+		return sakanElectricity;
 	}
 
 
@@ -93,7 +94,8 @@ public void setNumberOfFloor(int numberOfFloor) {
 
 
 	public void setSakanElectricity(boolean sakanElectricity) {
-		SakanElectricity = sakanElectricity;
+
+		this.sakanElectricity = sakanElectricity;
 	}
 
 
@@ -101,7 +103,7 @@ public void setNumberOfFloor(int numberOfFloor) {
 
 
 	public boolean isSakanWater() {
-		return SakanWater;
+		return sakanWater;
 	}
 
 
@@ -109,7 +111,8 @@ public void setNumberOfFloor(int numberOfFloor) {
 
 
 	public void setSakanWater(boolean sakanWater) {
-		SakanWater = sakanWater;
+
+		this.sakanWater = sakanWater;
 	}
 
 	public int getRentMonthly() {
@@ -124,7 +127,7 @@ public void setNumberOfFloor(int numberOfFloor) {
 		this.rentMonthly = rentMonthly;
 	}
 	public String getLocation() {
-		return Location;
+		return location;
 	}
 
 
@@ -132,7 +135,7 @@ public void setNumberOfFloor(int numberOfFloor) {
 
 
 	public void setLocation(String location) {
-		Location = location;
+		location = location;
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -141,22 +144,22 @@ public void setNumberOfFloor(int numberOfFloor) {
 
 		SakanDetails otherSakanDetails = (SakanDetails) obj;
 
-		return SakanWater == otherSakanDetails.SakanWater &&
+		return sakanWater == otherSakanDetails.sakanWater &&
 				rentMonthly == otherSakanDetails.rentMonthly &&
-				SakanElectricity == otherSakanDetails.SakanElectricity &&
-				Objects.equals(Location, otherSakanDetails.Location) &&
-				NumberOfFloor == otherSakanDetails.NumberOfFloor &&
+				sakanElectricity == otherSakanDetails.sakanElectricity &&
+				Objects.equals(location, otherSakanDetails.location) &&
+				numberOfFloor == otherSakanDetails.numberOfFloor &&
 				furnitureSaled == otherSakanDetails.furnitureSaled;
 	}
 
 	@Override
 	public String toString() {
 	    return "SakanDetails\n" +
-	            "SakanWater=" + SakanWater +
+	            "SakanWater=" + sakanWater +
 	            ", rentMonthly=" + rentMonthly +
-	            ", SakanElectricity=" + SakanElectricity +
-	            ", Location='" + Location +
-	            ", NumberOfFloor=" + NumberOfFloor +
+	            ", SakanElectricity=" + sakanElectricity +
+	            ", Location='" + location +
+	            ", NumberOfFloor=" + numberOfFloor +
 	            ", furnitureSaled=" + furnitureSaled;
 	}
 

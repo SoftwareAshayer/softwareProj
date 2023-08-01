@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Tenant extends Users{
     public String getTimeForRent() {
-		return TimeForRent;
+		return timeForRent;
 	}
 
 	public void setTimeForRent(String timeForRent) {
-		TimeForRent = timeForRent;
+		this.timeForRent = timeForRent;
 	}
-	String TimeForRent;
+	String timeForRent;
      public Sakan getS() {
 		return s;
 	}
@@ -18,7 +18,7 @@ public class Tenant extends Users{
 	public void setS(Sakan s) {
 		this.s = s;
 	}
-public boolean isAStudent;
+private boolean isAStudent;
 	public boolean heIsAStudent() {
 	return isAStudent;
 }
@@ -26,29 +26,29 @@ public boolean isAStudent;
 public void setAStudent(boolean isAStudent) {
 	this.isAStudent = isAStudent;
 }
-public	Sakan s;
+private 	Sakan s;
 	public int getAge() {
-		return Age;
+		return age;
 	}
 
 	public void setAge(int age) {
-		Age = age;
+		this.age = age;
 	}
-	int Age;
+	int age;
 	public String getUniversityMajor() {
-		return UniversityMajor;
+		return universityMajor;
 	}
 
 	public void setUniversityMajor(String universityMajor) {
-		UniversityMajor = universityMajor;
+		this.universityMajor = universityMajor;
 	}
-	String UniversityMajor;
+	String universityMajor;
 	public Tenant() {
-		name="";
+		setName("");
 		s=null;
 		isAStudent=false;
-		Age=0;
-		UniversityMajor=null;
+		age=0;
+		universityMajor=null;
 	}
 	
 	public Tenant(String name,String password) {
@@ -56,41 +56,41 @@ public	Sakan s;
     }
 	public Tenant(String name,
 				  String pass,
-				  String TimeForRent,
+				  String timeForRent,
 				  boolean isAStudent,
 				  Sakan s,
 				  int age,
-				  String UniversityMajor) {
+				  String universityMajor) {
         super(name,pass);
         // Copy other attributes from the otherTenant object
-        this.TimeForRent = TimeForRent;
+        this.timeForRent = timeForRent;
         this.isAStudent =isAStudent;
         this.s = s;
-        this.Age = age;
-        this.UniversityMajor = UniversityMajor;
+        this.age = age;
+        this.universityMajor = universityMajor;
     }
 	 @Override
 	    public String toString() {
 	        return "Tenant\n" +
-	                "name='" + name + '\'' +
-	                ", TimeForRent='" + TimeForRent + '\'' +
+	                "name='" + getName() + '\'' +
+	                ", TimeForRent='" + timeForRent + '\'' +
 	                ", isAStudent=" + isAStudent +
 	                ", s=" + s +
-	                ", Age=" + Age +
-	                ", UniversityMajor='" + UniversityMajor + '\'';
+	                ", Age=" + age +
+	                ", UniversityMajor='" + universityMajor + '\'';
 	    }
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
 		if (obj == null || getClass() != obj.getClass()) return false;
 
-		Tenant T2 = (Tenant) obj;
+		Tenant t2 = (Tenant) obj;
 
-		return Objects.equals(TimeForRent, T2.TimeForRent) &&
-				isAStudent == T2.isAStudent &&
-				Objects.equals(s, T2.s) &&
-				Age == T2.Age &&
-				Objects.equals(UniversityMajor, T2.UniversityMajor);
+		return Objects.equals(timeForRent, t2.timeForRent) &&
+				isAStudent == t2.isAStudent &&
+				Objects.equals(s, t2.s) &&
+				age == t2.age &&
+				Objects.equals(universityMajor, t2.universityMajor);
 	}
 
 

@@ -1,4 +1,4 @@
-package TestsFolder.tests;
+package testsFolder.tests;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class SignInTest {
-    List<Users> DB = DataBase.initializeDB();
+    List<Users> dataBase = DataBase.initializeDB();
 
     String username, password;
 
@@ -44,9 +44,9 @@ public class SignInTest {
         Properties prop = new Properties();
         try (InputStream input = new FileInputStream("fileForUser2.txt")) {
             prop.load(input);
-            String username = prop.getProperty("admin.username");
-            String password = prop.getProperty("admin.password");
-            assertTrue(SignInFeature.signIn(DB, username, password));
+            String username2 = prop.getProperty("admin.username");
+            String password2= prop.getProperty("admin.password");
+            assertTrue(SignInFeature.signIn(dataBase, username2, password2));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -58,9 +58,9 @@ public class SignInTest {
         Properties prop = new Properties();
         try (InputStream input = new FileInputStream("fileForUser.txt")) {
             prop.load(input);
-            String username = prop.getProperty("admin.username");
-            String password = prop.getProperty("admin.password");
-            assertFalse(SignInFeature.signIn(DB, username, password));
+            String username3 = prop.getProperty("admin.username");
+            String password3 = prop.getProperty("admin.password");
+            assertFalse(SignInFeature.signIn(dataBase, username3, password3));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
