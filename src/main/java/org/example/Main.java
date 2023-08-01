@@ -26,8 +26,15 @@ public class Main {
 		logger.setUseParentHandlers(false);
 		Formatter formatter = new Formatter() {
 			@Override
-			public String format(LogRecord r) {
-				return r.getMessage() + "\n";
+			public String format(LogRecord record) {
+				// Check if the log message contains sensitive information (e.g., passwords)
+				String message = record.getMessage();
+				if (message.contains("Password")) {
+					return "Sensitive information not logged.\n";
+				}
+
+				// Otherwise, use the default log message format
+				return record.getMessage() + "\n";
 			}
 		};
 		ConsoleHandler consoleHandler = new ConsoleHandler();
