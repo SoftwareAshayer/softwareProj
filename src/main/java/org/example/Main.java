@@ -18,24 +18,34 @@ import java.util.List;
 
 
 public class Main {
+	private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
-    	Logger logger = Logger.getLogger(Main.class.getName());
-        logger.setUseParentHandlers(false);
-        Formatter formatter = new Formatter() {
-            @Override
-            public String format(LogRecord r) {
-                return r.getMessage() + "\n";
-            }
-        };
-        ConsoleHandler consoleHandler = new ConsoleHandler();           //this logger method i use it to print the statments instead of system.out
+		logger.setUseParentHandlers(false);
+		Formatter formatter = new Formatter() {
+			@Override
+			public String format(LogRecord r) {
+				return r.getMessage() + "\n";
+			}
+		};
+		ConsoleHandler consoleHandler = new ConsoleHandler();
 		logger.setLevel(Level.INFO);
 		consoleHandler.setLevel(Level.INFO);
 		consoleHandler.setFormatter(formatter);
-        logger.addHandler(consoleHandler);
-        String ownerClassName="org.example.Owner";
+		logger.addHandler(consoleHandler);
+
+
+
+
+
+
+
+
+
+
+		String ownerClassName="org.example.Owner";
 		String tenantClassName="org.example.Tenant";
 		String administratorClassName="org.example.Administrator";
 
