@@ -686,27 +686,40 @@ logger.info(logMessageForWrong);
             	  while(true)
             	  {
             		  Tenant tenant=(Tenant) u;
-            	        logger.info(boldText+yellowColor+"1-"+greenColor+"View Available housing");
-            	        logger.info(boldText+yellowColor+"2-"+greenColor+"view pictures of housing and know their prices, location,and services available in them");
-            	        logger.info(boldText+yellowColor+"3-"+greenColor+"Book accommodation");
-            	        logger.info(boldText+yellowColor+"4-"+greenColor+"Show Deitails about housing if your a student");
-            	        logger.info(boldText+yellowColor+"5-"+greenColor+"Sell the furniture");
-            	        logger.info(boldText+yellowColor+"6-"+greenColor+"Show All Deitails");
-            	        logger.info(boldText+yellowColor+"7-"+greenColor+"Log out"+resetColor);
+					  String logMessage41 = String.format("%s1-%sView Available housing%s", boldText, greenColor, resetColor);
+					  logger.info(logMessage41);
+
+					  String logMessage42 = String.format("%s2-%sview pictures of housing and know their prices, location, and services available in them%s", boldText, greenColor, resetColor);
+					  logger.info(logMessage42);
+
+					  String logMessage43 = String.format("%s3-%sBook accommodation%s", boldText, greenColor, resetColor);
+					  logger.info(logMessage43);
+
+					  String logMessage44 = String.format("%s4-%sShow Details about housing if you're a student%s", boldText, greenColor, resetColor);
+					  logger.info(logMessage44);
+
+					  String logMessage45 = String.format("%s5-%sSell the furniture%s", boldText, greenColor, resetColor);
+					  logger.info(logMessage45);
+
+					  String logMessage46 = String.format("%s6-%sShow All Details%s", boldText, greenColor, resetColor);
+					  logger.info(logMessage46);
+
+					  logger.info(logMessageLogOut);
               		  int choice3=scanner.nextInt();
 
 
                          if(choice3==1)
                         {
 
-                       	 logger.info(specialColor2+"The Available Sakans Are:- \n");
-
+							String logMessage47 = String.format("%sThe Available Sakans Are:-%s \n", specialColor2, resetColor);
+							logger.info(logMessage47);
                         	for (Sakan s : sakan)
                         	{
                         		if(s.isAvailabel())
                         		{
-                                  	logger.info(specialColor2+"Location:- "+s.sakanD.getLocation()+" Cost:- "+s.sakanD.getRentMonthly()+"\n"+resetColor);
-                        		}
+									String logMessage48 = String.format("%sLocation:- %s Cost:- %s\n%s", specialColor2, s.sakanD.getLocation(), s.sakanD.getRentMonthly(), resetColor);
+									logger.info(logMessage48);
+								}
                         	}
 
 
@@ -733,24 +746,27 @@ logger.info(logMessageForWrong);
 
 
 								}
-                             	 logger.info(specialColor2+(++num)+"- Location:- "+s.sakanD.getLocation()+"\nCost:- "+s.sakanD.getRentMonthly());
-                             	 if(s.sakanD.isSakanElectricity())
+								String logMessage49 = String.format("%s%d- Location:- %s\nCost:- %s%s", specialColor2, ++num, s.sakanD.getLocation(), s.sakanD.getRentMonthly(), resetColor);
+								logger.info(logMessage49);
+								if(s.sakanD.isSakanElectricity())
                              	 {
-                                 	 logger.info(specialColor2+"The Electrical is Available"+resetColor);
-                             	 }
+									 String logMessage50 = String.format("%sThe Electrical is Available%s", specialColor2, resetColor);
+									 logger.info(logMessage50);
+								  }
                              	 else
                              	 {
-                                 	 logger.info(specialColor2+"The Electrical is not Available"+resetColor);
-                             	 }
+									 String logMessage51 = String.format("%sThe Electrical is not Available%s", specialColor2, resetColor);
+									 logger.info(logMessage51);                                 	 }
                              	 if(s.sakanD.isSakanWater())
                              	 {
-                                 	 logger.info(specialColor2+"The Water is Available"+resetColor);
-
-                             	 }
+									 String logMessage52 = String.format("%sThe Water is Available%s", specialColor2, resetColor);
+									 logger.info(logMessage52);
+								 }
                              	 else
                              	 {
-                                 	 logger.info(specialColor2+"The Water is not Available"+resetColor);
-                             	 }
+									 String logMessage53 = String.format("%sThe Water is not Available%s", specialColor2, resetColor);
+									 logger.info(logMessage53);
+								  }
                         	}
 
 
@@ -764,7 +780,8 @@ logger.info(logMessageForWrong);
                         {
 							if(((Tenant) u).getS()!=null)
 							{
-								logger.info(redColor+"You already Signed in Sakan!"+resetColor);
+								String logMessage54 = String.format("%sYou already Signed in Sakan!%s", redColor, resetColor);
+								logger.info(logMessage54);
 								continue;
 
 
@@ -774,20 +791,22 @@ logger.info(logMessageForWrong);
                         	{
                         		if(s.isAvailabel())
                         		{
-                                  	 logger.info(specialColor2+(++number)+"-Location:- "+s.sakanD.getLocation()+" Cost:- "+s.sakanD.getRentMonthly()+"\n"+resetColor);
-                        		}
+									String logMessage55 = String.format("%s%d-Location:- %s Cost:- %s\n%s", specialColor2, ++number, s.sakanD.getLocation(), s.sakanD.getRentMonthly(), resetColor);
+									logger.info(logMessage55);
+								}
                         	}
-                         	 logger.info(specialColor+"Which one you need Sir?"+resetColor);
-                         	 int choice2=scanner.nextInt();
+							String logMessage56 = String.format("%sWhich one you need Sir?%s", specialColor, resetColor);
+							logger.info(logMessage56);
+							int choice2=scanner.nextInt();
                          	 if(choice2>number)
                          	 {
-                               	 logger.info(redColor+"Wrong Choice!"+"\n"+"Try Again"+resetColor);
+                               	 logger.info(logMessageForWrong);
 continue;
                          	 }
                         	 tenant.setS(sakan.get(choice2-1));
 							sakan.get(choice2-1).setTenant(tenant);
 							sakan.get(choice2-1).setAvailabel();
-							logger.info(specialColor2+"Done!"+resetColor);
+							logger.info(logMessageForDone);
 
 
 
@@ -808,8 +827,9 @@ continue;
                                 	if(t.isAStudent && !Objects.equals(t.getName(), tenant.getName()))
                                 	{
                                 		flagForNoOne=0;
-                                     	 logger.info(specialColor2+(++number)+"-Name:- "+t.getName()+" Age:- "+t.getAge()+" Usivirsity Major:- "+t.getUniversityMajor()+resetColor);
-                                	}
+										String logMessage57 = String.format("%s%d-Name:- %s Age:- %d Usivirsity Major:- %s%s", specialColor2, ++number, t.getName(), t.getAge(), t.getUniversityMajor(), resetColor);
+										logger.info(logMessage57);
+									}
 
                                 			}
 
@@ -818,42 +838,47 @@ continue;
                                 }
 if(flagForNoOne==1)
 {
-	 logger.info(specialColor2+"There is no other students in your Sakan!"+resetColor);
+	String logMessage58 = String.format("%sThere is no other students in your Sakan!%s", specialColor2, resetColor);
+	logger.info(logMessage58);
+
 }
 
 
                         	}
                         	else
                         	{
-                            	 logger.info(specialColor2+"Sorry Sir but this will acsess for the students only!");
+								String logMessage59 = String.format("%sSorry Sir but this will access for the students only!%s", specialColor2, resetColor);
+								logger.info(logMessage59);
+
                         	}
 
                         }
                         else if(choice3==5)
                         {
-                         	logger.info(specialColor+"Are you Sure to sale the furniture for this Sakan?"+"\n"+yellowColor+"1-"+greenColor+"Yes"+"\n"+yellowColor+"2-"+greenColor+"No"+resetColor);
-                        	int choice2=scanner.nextInt();
+							String logMessage60 = String.format("%sAre you Sure to sale the furniture for this Sakan?" + "%n%s1-%sYes%n%s2-%sNo%n%s", specialColor, yellowColor, greenColor, yellowColor, greenColor, resetColor);
+							logger.info(logMessage60);
+							int choice2=scanner.nextInt();
                         	if(choice2==1)
                         	{
 								if(tenant.s.sakanD.isFurnitureSaled())
 								{
-									logger.info(specialColor2+"Already Saled!"+resetColor);
-
+									String logMessage61 = String.format("%sAlready Saled!%s", specialColor2, resetColor);
+									logger.info(logMessage61);
 								}
 								else {
 									tenant.s.sakanD.setFurnitureSaled(true);
-									logger.info(specialColor2 + "Done!" + resetColor);
+									logger.info(logMessageForDone);
 								}
 
                         	}
                         	else if(choice2==2)
                         	{
 
-                            	 logger.info(specialColor2+"Very Well!"+resetColor);
-
+								String logMessage62 = String.format("%sVery Well!%s", specialColor2, resetColor);
+								logger.info(logMessage62);
                         	}
                         	else {
-                              	 logger.info("Wrong Choice!"+"\n"+"Try Again");
+                              	 logger.info(logMessageForWrong);
                         	}
 
                         }
@@ -874,8 +899,12 @@ break;
 
 
                              }
-                        	 logger.info(specialColor2+"Name of Tenant:- "+tenant.getName()+"\nAge:- "+tenant.getAge()+"\nName of owner for this sakan:- "+o.getName()+"\nEmail of owner for contact:- "+o.getEmailForContact()+"\nThe rent is paid in:- "+tenant.getTimeForRent()+resetColor);
+							String logMessage63 = String.format(
+									"%sName of Tenant:- %s%nAge:- %d%nName of owner for this sakan:- %s%nEmail of owner for contact:- %s%nThe rent is paid in:- %s%n%s",
+									specialColor2, tenant.getName(), tenant.getAge(), o.getName(), o.getEmailForContact(), tenant.getTimeForRent(), resetColor
+							);
 
+							logger.info(logMessage63);
 
 
 
@@ -900,7 +929,7 @@ break;
                         	break;
                         }
                         else {
-                       	 logger.info(redColor+"Wrong Choice!"+"\n"+"Try Again"+resetColor);
+                       	 logger.info(logMessageForWrong);
                         }
 
             	  }
@@ -1014,18 +1043,20 @@ break;
 
 
             } else {
-            	logger.info(specialColor2+italicText+"There is a wrong into username or your password sir!");
-            }
+				String logMessage64 = String.format("%s%sThere is a wrong into username or your password sir!%s", specialColor2, italicText, resetColor);
+				logger.info(logMessage64);
+			}
 
         }
         else if(choice==9)
        {
-    	   logger.info(italicText+greenColor+"Thank "+redColor+"You"+specialColor+"!");
-           System.exit(0);
+		   String logMessage65 = String.format("%s%sThank %sYou%s!", italicText, greenColor, redColor, specialColor, resetColor);
+		   logger.info(logMessage65);
+		   System.exit(0);
        }
         else
         {
-          	 logger.info(redColor+"Wrong Choice!"+"\n"+"Try Again"+resetColor);
+          	 logger.info(logMessageForWrong);
         }
 
 
