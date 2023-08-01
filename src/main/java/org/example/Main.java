@@ -151,8 +151,8 @@ public class Main {
 											tenantForEdit.heIsAStudent(),
 											tenantForEdit.getS(),
 											tenantForEdit.getAge(),
-											tenantForEdit.getUniversityMajor());            	            		dataBase2.remove(i);
-									dataBase2.add(i, tenant);
+											tenantForEdit.getUniversityMajor());
+									dataBase2.set(i,tenant);
 								}
 								else {
 									Owner ownerForEdit=(Owner) u1;
@@ -161,8 +161,9 @@ public class Main {
 											ownerForEdit.getPhoneNumber(),
 											ownerForEdit.getLocation(),
 											ownerForEdit.getEmailForContact()
-									);                	            		dataBase2.remove(i);
-									dataBase2.add(i, owner);
+									);
+									dataBase2.set(i,owner);
+
 								}
 
 
@@ -183,8 +184,7 @@ public class Main {
 											tenantForEdit.getS(),
 											tenantForEdit.getAge(),
 											tenantForEdit.getUniversityMajor());
-									dataBase.remove(i);
-									dataBase.add(i, tenant);
+									dataBase.set(i,tenant);
 								}
 								else {
 									Owner ownerForEdit=(Owner) u2;
@@ -194,8 +194,8 @@ public class Main {
 											ownerForEdit.getLocation(),
 											ownerForEdit.getEmailForContact()
 									);
-										dataBase.remove(i);
-										dataBase.add(i, owner);
+									dataBase.set(i,owner);
+
 								}
 								logger.info(logMessageForDone);
 
@@ -233,8 +233,7 @@ public class Main {
 							if(choice2==1)
 							{
 								Sakan sakanAfter=new Sakan(a1);
-								sakan2.remove(o);
-								sakan2.add(o, sakanAfter);
+								sakan2.set(o,sakanAfter);
 								logger.info(logMessageForDone);
 
 							}
@@ -242,8 +241,7 @@ public class Main {
 							{
 
 								Sakan sakanAfter=new Sakan(a2);
-									sakan.remove(o);
-								sakan.add(o, sakanAfter);
+									sakan.set(o,sakanAfter);
 
 							}
 							else
