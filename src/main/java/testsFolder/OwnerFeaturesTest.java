@@ -1,4 +1,4 @@
-package testsFolder.tests;
+package testsFolder;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -83,8 +83,8 @@ assertNull(DataBase.getOwner("anyString"));
         List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
-                Owner owner2 = (Owner) user;
-                assertTrue(OwnerFeatures.ownerFeatureThree(owner2, owner2.getSakan(), true, true));
+                Owner owner3 = (Owner) user;
+                assertTrue(OwnerFeatures.ownerFeatureThree(owner3, owner3.getSakan(), true, true));
 
 
             }
@@ -98,7 +98,6 @@ assertNull(DataBase.getOwner("anyString"));
     @Test
     public void theOwnerCanSeeTheRentMonthlyForThisSakan() {
         // Write code here that turns the phrase above into concrete actions
-        List<Users> dataBase = DataBase.initializeDB();
         for (Users user : dataBase) {
             if (user.getName().equals(username)) {
                 Owner owner3 = (Owner) user;

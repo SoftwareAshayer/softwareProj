@@ -135,7 +135,7 @@ public void setNumberOfFloor(int numberOfFloor) {
 
 
 	public void setLocation(String location) {
-		location = location;
+		this.location = location;
 	}
 	@Override
 	public boolean equals(Object obj) {

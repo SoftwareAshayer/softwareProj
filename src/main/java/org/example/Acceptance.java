@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 		plugin="html:target/cucumber/report.html",
 		monochrome=true,
 		snippets= CucumberOptions.SnippetType.CAMELCASE,
-		glue="testsFolder.tests")
+		glue="testsFolder")
 
 public class Acceptance {
 

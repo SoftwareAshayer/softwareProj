@@ -1,4 +1,4 @@
-package testsFolder.tests;
+package testsFolder;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
 public class SignInTest {
     List<Users> dataBase = DataBase.initializeDB();
 
-    String username, password;
+    String username;
+            String password;
 
     @Given("that the user is not logged in")
     public void thatTheUserIsNotLoggedIn() {

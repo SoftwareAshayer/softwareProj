@@ -243,7 +243,7 @@ public class Main {
 							{
 
 								Sakan sakanAfter=new Sakan(a2);
-								if (0 >= 0 && 0 < sakan.size()) {
+								if (o>=0&&o<sakan.size()) {
 									sakan.remove(o);
 								}
 								sakan.add(o, sakanAfter);
@@ -786,38 +786,32 @@ logger.info(logMessageForWrong);
 							{
 								String logMessage54 = String.format("%sYou already Signed in Sakan!%s", redColor, resetColor);
 								logger.info(logMessage54);
-								continue;
 
 
 							}
-                        	int number=0;
-                        	for (Sakan s : sakan)
-                        	{
-                        		if(s.isAvailabel())
-                        		{
-									String logMessage55 = String.format("%s%d-Location:- %s Cost:- %s%s", specialColor2, ++number, s.getSakanD().getLocation(), s.getSakanD().getRentMonthly(), resetColor);
-									logger.info(logMessage55);
+							else {
+								int number = 0;
+								for (Sakan s : sakan) {
+									if (s.isAvailabel()) {
+										String logMessage55 = String.format("%s%d-Location:- %s Cost:- %s%s", specialColor2, ++number, s.getSakanD().getLocation(), s.getSakanD().getRentMonthly(), resetColor);
+										logger.info(logMessage55);
+									}
 								}
-                        	}
-							String logMessage56 = String.format("%sWhich one you need Sir?%s", specialColor, resetColor);
-							logger.info(logMessage56);
-							int choice2=scanner.nextInt();
-                         	 if(choice2>number)
-                         	 {
-                               	 logger.info(logMessageForWrong);
+								String logMessage56 = String.format("%sWhich one you need Sir?%s", specialColor, resetColor);
+								logger.info(logMessage56);
+								int choice2 = scanner.nextInt();
+								if (choice2 > number) {
+									logger.info(logMessageForWrong);
 
-                         	 }
-							  else {
-								 tenant.setS(sakan.get(choice2 - 1));
-								 sakan.get(choice2 - 1).setTenant(tenant);
-								 sakan.get(choice2 - 1).setAvailabel();
-								 logger.info(logMessageForDone);
-							 }
+								} else {
+									tenant.setS(sakan.get(choice2 - 1));
+									sakan.get(choice2 - 1).setTenant(tenant);
+									sakan.get(choice2 - 1).setAvailabel();
+									logger.info(logMessageForDone);
+								}
 
 
-
-
-
+							}
                         }
                         else if(choice3==4)
                         {

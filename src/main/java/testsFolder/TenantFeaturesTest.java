@@ -1,4 +1,4 @@
-package testsFolder.tests;
+package testsFolder;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.example.*;
@@ -107,7 +107,7 @@ assertNull(TenantFeatures.studentAccess(tenant2,dataBase));
     Tenant tenant1=DataBase.getTenant(username);
         assert tenant1 != null;
         boolean sold;
-    sold=TenantFeatures.SellFurniture(tenant1);
+    sold=TenantFeatures.sellFurniture(tenant1);
     assertTrue(sold);
 
 
@@ -132,7 +132,7 @@ assertNull(TenantFeatures.studentAccess(tenant2,dataBase));
         List <Sakan> sakan=DataBase.initializeSakan();
         tenant1.setS(sakan.get(0));
 
-        boolean doneForFeatureSix=TenantFeatures.ShowAllDeitails(tenant2);
+        boolean doneForFeatureSix=TenantFeatures.showAllDeitails(tenant2);
          assertTrue(doneForFeatureSix);
          assertNotEquals("",tenant1.toString());
          assertNotEquals("",tenant1.getS().toString());
@@ -140,7 +140,7 @@ assertNull(TenantFeatures.studentAccess(tenant2,dataBase));
          Tenant tenant3=new Tenant("anyName","anyPass");
          tenant3.setS(new Sakan());
          tenant3.getS().setOwner(new Owner());
-         assertFalse(TenantFeatures.ShowAllDeitails(tenant3));
+         assertFalse(TenantFeatures.showAllDeitails(tenant3));
 
     }
 

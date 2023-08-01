@@ -90,7 +90,7 @@ return null;
 
 
 
-    public static boolean SellFurniture(Tenant tenant)
+    public static boolean sellFurniture(Tenant tenant)
     {
     boolean sold=tenant.getS().getSakanD().isFurnitureSaled();
     tenant.getS().getSakanD().setFurnitureSaled(true);
@@ -99,7 +99,7 @@ return null;
     }
 
 
-    public static boolean ShowAllDeitails(Tenant tenant)
+    public static boolean showAllDeitails(Tenant tenant)
     {
   Owner owner=DataBase.getOwner("Ali");
         assert owner != null;
