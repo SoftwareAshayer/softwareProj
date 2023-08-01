@@ -7,15 +7,19 @@ import org.example.SignInFeature;
 import org.example.Users;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class SignInTest {
-    List<Users> DB= DataBase.initializeDB();
+    List<Users> DB = DataBase.initializeDB();
 
-    String username,password;
+    String username, password;
 
     @Given("that the user is not logged in")
     public void thatTheUserIsNotLoggedIn() {
@@ -26,45 +30,42 @@ public class SignInTest {
     @Given("the username is {string}")
     public void theUsernameIs(String username) {
 
-        this.username=username;
+        this.username = username;
     }
 
     @Given("the password is {string}")
-    public void thePasswordIs(String password)
-    {
-        this.password=password;
+    public void thePasswordIs(String password) {
+        this.password = password;
     }
 
     @Then("the administrator login succeeds")
     @Test
     public void theAdministratorLoginSucceeds() {
-        this.username="Ahmad";
-        this.password="1234";
-
-        assertTrue(SignInFeature.signIn(DB,username,password));
+        Properties prop = new Properties();
+        try (InputStream input = new FileInputStream("fileForUser2.txt")) {
+            prop.load(input);
+            String username = prop.getProperty("admin.username");
+            String password = prop.getProperty("admin.password");
+            assertTrue(SignInFeature.signIn(DB, username, password));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-
-
-
-
-    @Then("the administrator will not login")
+        @Then("the administrator will not login")
     @Test
     public void theAdministratorWillNotLogin() {
-        this.username="Ahmad";
-        this.password="4321";
-        // Write code here that turns the phrase above into concrete
-        assertFalse(SignInFeature. signIn(DB,username,password));
+        Properties prop = new Properties();
+        try (InputStream input = new FileInputStream("fileForUser.txt")) {
+            prop.load(input);
+            String username = prop.getProperty("admin.username");
+            String password = prop.getProperty("admin.password");
+            assertFalse(SignInFeature.signIn(DB, username, password));
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
 }
-
-
-
-
-
-
-
-
-
-

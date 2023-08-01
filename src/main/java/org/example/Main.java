@@ -31,7 +31,9 @@ public class Main {
             }
         };
         ConsoleHandler consoleHandler = new ConsoleHandler();           //this logger method i use it to print the statments instead of system.out
-        consoleHandler.setFormatter(formatter);
+		logger.setLevel(Level.INFO);
+		consoleHandler.setLevel(Level.INFO);
+		consoleHandler.setFormatter(formatter);
         logger.addHandler(consoleHandler);
         String ownerClassName="org.example.Owner";
 		String tenantClassName="org.example.Tenant";
