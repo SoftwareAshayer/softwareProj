@@ -10,7 +10,6 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.logging.*;
 
-
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter.You can now see whitespace characters in your code.
 
@@ -18,7 +17,7 @@ import java.util.logging.*;
 public class Main {
 	private static Logger logger;
 
-	private static void setupLogger() {
+	private static void setupLogger() throws SecurityException {
 		logger = Logger.getLogger("myLog");
 		logger.setUseParentHandlers(false);
 
