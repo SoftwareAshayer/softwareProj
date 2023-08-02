@@ -25,12 +25,12 @@ public class Main {
 		ConsoleHandler consoleHandler = new ConsoleHandler();
 		consoleHandler.setFormatter(new SimpleFormatter() {
 			@Override
-			public synchronized String format(LogRecord record) {
-				return record.getMessage() + "\n";
+			public synchronized String format(LogRecord r) {
+				return r.getMessage() + "\n";
 			}
 		});
 
-		logger.addHandler(consoleHandler);
+logger.addHandler(consoleHandler);
 	}
 
     public static void main(String[] args) {
