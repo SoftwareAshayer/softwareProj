@@ -17,22 +17,26 @@ import java.util.logging.*;
 
 public class Main {
 	private static void setupLogger() {
-		logger = Logger.getLogger("myLog");
-		logger.setLevel(Level.ALL);
-		logger.setUseParentHandlers(false); // Disable default handlers
+		synchronized (loggerLock) {
+			logger = Logger.getLogger("myLog");
+			logger.setLevel(Level.ALL);
+			logger.setUseParentHandlers(false); // Disable default handlers
 
-		ConsoleHandler consoleHandler = new ConsoleHandler();
-		consoleHandler.setFormatter(new SimpleFormatter() {
-			@Override
-			public synchronized String format(LogRecord record) {
-				return record.getMessage() + "\n";
-			}
-		});
+			ConsoleHandler consoleHandler = new ConsoleHandler();
+			consoleHandler.setFormatter(new SimpleFormatter() {
+				@Override
+				public synchronized String format(LogRecord record) {
+					return record.getMessage() + "\n";
+				}
+			});
 
-		logger.addHandler(consoleHandler);
+			logger.addHandler(consoleHandler);
+		}
 	}
-private static Logger logger;
-    public static void main(String[] args) {
+
+	private static final Object loggerLock = new Object();
+	private static Logger logger;
+	public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
 		setupLogger();
