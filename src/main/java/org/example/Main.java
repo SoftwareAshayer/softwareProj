@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.logging.*;
 import java.util.List;
-
-
+import java.util.logging.*;
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -18,13 +16,26 @@ import java.util.List;
 
 
 public class Main {
+	private static void setupLogger() {
+		logger = Logger.getLogger("myLog");
+		logger.setLevel(Level.ALL);
+		logger.setUseParentHandlers(false); // Disable default handlers
 
+		ConsoleHandler consoleHandler = new ConsoleHandler();
+		consoleHandler.setFormatter(new SimpleFormatter() {
+			@Override
+			public synchronized String format(LogRecord record) {
+				return record.getMessage() + "\n";
+			}
+		});
 
+		logger.addHandler(consoleHandler);
+	}
+private static Logger logger;
     public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
-		CustomLogger logger = new CustomLogger(CustomLogger.Level.INFO);
-
+		setupLogger();
 
 
 
