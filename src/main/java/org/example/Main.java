@@ -28,13 +28,12 @@ public class Main {
 				return r.getMessage() + "\n";
 			}
 		});
-		try {
+		boolean isDevelopmentEnvironment = true;
+		if (isDevelopmentEnvironment) {
 			logger.addHandler(consoleHandler);
 		}
-		catch (SecurityException s){
-			logger.info("error");
 
-		}
+
 	}
 
     public static void main(String[] args) {
