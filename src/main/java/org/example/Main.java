@@ -18,24 +18,13 @@ import java.util.List;
 
 
 public class Main {
-	private static final Logger logger = Logger.getLogger(Main.class.getName());
+
 
     public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
-		logger.setUseParentHandlers(false);
-		Formatter formatter = new Formatter() {
-			@Override
-			public String format(LogRecord r) {
-				// Check if the log message contains sensitive information (e.g., passwords)
-				return r.getMessage() + "\n";
-			}
-		};
-		ConsoleHandler consoleHandler = new ConsoleHandler();
-		logger.setLevel(Level.INFO);
-		consoleHandler.setLevel(Level.INFO);
-		consoleHandler.setFormatter(formatter);
-		logger.addHandler(consoleHandler);
+		CustomLogger logger = new CustomLogger(CustomLogger.Level.INFO);
+
 
 
 
