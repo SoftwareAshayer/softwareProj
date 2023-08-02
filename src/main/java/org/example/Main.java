@@ -29,7 +29,7 @@ public class Main {
 				return r.getMessage() + "\n";
 			}
 		});
-
+		logger.setLevel(Level.FINEST); 
 logger.addHandler(consoleHandler);
 	}
 
