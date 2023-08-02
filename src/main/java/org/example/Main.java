@@ -21,7 +21,7 @@ public class Main {
 		logger = Logger.getLogger("myLog");
 		logger.setUseParentHandlers(false);
 
-		ConsoleHandler consoleHandler = new ConsoleHandler();
+		Handler consoleHandler = new ConsoleHandler();
 		consoleHandler.setFormatter(new SimpleFormatter() {
 			@Override
 			public synchronized String format(LogRecord r) {
