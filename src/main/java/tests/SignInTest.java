@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -49,7 +51,8 @@ public class SignInTest {
             String password2= prop.getProperty("admin.password");
             assertTrue(SignInFeature.signIn(dataBase, username2, password2));
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("Logger"); // Replace "YourLoggerName" with an appropriate logger name
+            logger.log(Level.SEVERE, "An IOException occurred while processing the file.", e);
         }
     }
 
@@ -64,8 +67,9 @@ public class SignInTest {
             assertFalse(SignInFeature.signIn(dataBase, username3, password3));
 
         } catch (IOException e) {
-            e.printStackTrace();
-       }
+            Logger logger = Logger.getLogger("Logger"); // Replace "YourLoggerName" with an appropriate logger name
+            logger.log(Level.SEVERE, "An IOException occurred while processing the file.", e);
+        }
     }
 
 
