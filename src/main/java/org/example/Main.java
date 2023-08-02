@@ -28,10 +28,7 @@ public class Main {
 				return r.getMessage() + "\n";
 			}
 		});
-		boolean isDevelopmentEnvironment = true;
-		if (isDevelopmentEnvironment) {
 			logger.addHandler(consoleHandler);
-		}
 
 
 	}
