@@ -18,45 +18,25 @@ import java.util.logging.*;
 public class Main {
 	private static Logger logger;
 
-	private static Logger getLogger() {
-		if (logger == null) {
-			synchronized (Main.class) {
-				if (logger == null) {
-					logger = Logger.getLogger("myLog");
-					logger.setUseParentHandlers(false);
+	private static void setupLogger() {
+		logger = Logger.getLogger("myLog");
+		logger.setUseParentHandlers(false);
 
-					Handler customHandler = new CustomHandler();
-					logger.addHandler(customHandler);
-				}
+		ConsoleHandler consoleHandler = new ConsoleHandler();
+		consoleHandler.setFormatter(new SimpleFormatter() {
+			@Override
+			public synchronized String format(LogRecord r) {
+				return r.getMessage() + "\n";
 			}
-		}
-		return logger;
-	}
-
-
-	private static class CustomHandler extends Handler {
-		@Override
-		public void publish(LogRecord r) {
-			String logMessage = r.getMessage();
-			// Handle the log message as desired (e.g., print to a file, send over the network, etc.)
-			System.out.println(logMessage);
-		}
-
-		@Override
-		public void flush() {
-			// Implement flushing logic if needed
-		}
-
-		@Override
-		public void close() throws SecurityException {
-			// Implement closing logic if needed
-		}
+		});
+logger.addHandler(consoleHandler);
 	}
 
     public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
-logger=getLogger();
+setupLogger();
+
 
 
 
