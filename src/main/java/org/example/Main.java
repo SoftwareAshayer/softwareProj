@@ -28,7 +28,13 @@ public class Main {
 				return r.getMessage() + "\n";
 			}
 		});
-logger.addHandler(consoleHandler);
+		try {
+			logger.addHandler(consoleHandler);
+		}
+		catch (SecurityException s){
+			logger.info("error");
+
+		}
 	}
 
     public static void main(String[] args) {
