@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.List;
-import java.util.logging.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -16,30 +19,27 @@ import java.util.logging.*;
 
 
 public class Main {
-	private static void setupLogger() {
-		synchronized (loggerLock) {
-			logger = Logger.getLogger("myLog");
-			logger.setLevel(Level.ALL);
-			logger.setUseParentHandlers(false); // Disable default handlers
+	private static Logger logger;
 
-			ConsoleHandler consoleHandler = new ConsoleHandler();
-			consoleHandler.setFormatter(new SimpleFormatter() {
-				@Override
-				public synchronized String format(LogRecord record) {
-					return record.getMessage() + "\n";
-				}
-			});
+	private static void setupLogger() throws IOException {
+		logger = Logger.getLogger("myLog");
+		logger.setLevel(Level.ALL);
 
-			logger.addHandler(consoleHandler);
-		}
+		FileHandler fileHandler = new FileHandler("logfile.log");
+		fileHandler.setFormatter(new SimpleFormatter());
+
+		logger.addHandler(fileHandler);
 	}
 
-	private static final Object loggerLock = new Object();
-	private static Logger logger;
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
-		setupLogger();
+		try {
+			setupLogger();
+			logger.info("This is some code");
+		} catch (IOException e) {
+			Logger logger = Logger.getLogger("Logger"); // Replace "YourLoggerName" with an appropriate logger name
+			logger.log(Level.SEVERE, "An IOException occurred while processing the file.", e);		}
 
 
 
