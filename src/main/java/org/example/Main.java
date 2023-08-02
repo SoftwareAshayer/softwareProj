@@ -18,7 +18,7 @@ import java.util.logging.*;
 public class Main {
 	private static Logger logger;
 
-	private static void setupLogger() {
+	private static void setupLogger() throws SecurityException, java.io.IOException  {
 		logger = Logger.getLogger("myLog");
 		logger.setUseParentHandlers(false);
 
@@ -29,11 +29,10 @@ public class Main {
 				return r.getMessage() + "\n";
 			}
 		});
-		logger.setLevel(Level.FINEST); 
 logger.addHandler(consoleHandler);
 	}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
 setupLogger();
