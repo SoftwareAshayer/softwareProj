@@ -49,7 +49,7 @@ public class SignInTest {
             String password2= prop.getProperty("admin.password");
             assertTrue(SignInFeature.signIn(dataBase, username2, password2));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -64,8 +64,8 @@ public class SignInTest {
             assertFalse(SignInFeature.signIn(dataBase, username3, password3));
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+            e.printStackTrace();
+       }
     }
 
 

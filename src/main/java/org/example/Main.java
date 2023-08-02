@@ -751,7 +751,7 @@ logger.info(logMessageForWrong);
 									try {
 										desktop.open(photoFile);
 									} catch (IOException e) {
-										throw new RuntimeException(e);
+										logger.info("Error occured");
 									}
 
 
