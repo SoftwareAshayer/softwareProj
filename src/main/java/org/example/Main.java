@@ -17,29 +17,12 @@ import java.util.logging.*;
 public class Main {
 	private static Logger logger;
 
-	private static void setupLogger() throws SecurityException {
-		logger = Logger.getLogger("myLog");
-		logger.setUseParentHandlers(false);
 
-		Handler consoleHandler = new ConsoleHandler();
-		consoleHandler.setFormatter(new SimpleFormatter() {
-			@Override
-			public synchronized String format(LogRecord r) {
-				return r.getMessage() + "\n";
-			}
-		});
-			logger.addHandler(consoleHandler);
-
-
-	}
 
     public static void main(String[] args) {
 		List<Users> dataBase=DataBase.initializeDB();
 		List<Users> dataBase2= DataBase.initializeDB();
-setupLogger();
-
-
-
+		logger=Logger.getLogger("");
 
 
 
