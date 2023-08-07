@@ -21,7 +21,7 @@ public class Main {
 			@Override
 			public boolean isLoggable(LogRecord r) {
 				if (r.getLevel() == Level.INFO) {
-					System.out.println(r.getMessage());
+					System.err.println(r.getMessage());
 					return false;
 				}
 				return true;
